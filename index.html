@@ -713,8 +713,6 @@
             init_links();
             switch_page(true);
         }
-        window.addEventListener("load", init_document);
-
 
         function init_links() {
             var links = [
@@ -1361,4 +1359,7 @@
     </div>
     </div>
     <div id="footer"><a href="#links">קישורים מומלצים</a>|<a href="#terms">תנאי שימוש</a>|<a href="#contact">צור קשר</a></div>
+    <script>
+        init_document();
+    </script>
 </body>
