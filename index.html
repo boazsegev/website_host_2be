@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+
+<head>
+    <title>2Be Tantra - להיות טנטרה</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui=yes" name="viewport" />
+    <style type="text/css">
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            direction: rtl;
+            padding: 0;
+            margin: 0;
+            font-family: verdana, arial, helvetica, sans-serif
+        }
+
+        html {
+            background-image: url("/images/dakini/side_bk.jpg");
+            background-repeat: repeat-y;
+            background-position: right top;
+            background-color: #f4ebe7
+        }
+
+        #header,
+        #container,
+        #menu,
+        #footer,
+        #notice {
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            box-sizing: border-box;
+            position: absolute;
+            top: 130px;
+            bottom: 0;
+            padding: 0 0 2em 0;
+            width: 100%;
+        }
+
+        #inner_container {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        #header {
+            border-bottom: 1px solid #aaa;
+            height: 130px;
+            background-color: #444;
+            background-image: url(/images/dakini/top_bk.jpg);
+            background-repeat: repeat-x;
+            background-position: top center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 200
+        }
+
+        #header .home {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 305px;
+            height: 130px;
+            content: '';
+            z-index: +10
+        }
+
+        #header .login {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.5em;
+            margin: 0;
+            min-height: 50px;
+            z-index: +10;
+            text-align: left;
+            color: #faa;
+            text-decoration: none;
+            font-size: 0.8em
+        }
+
+        #header .login:hover {
+            color: #fff
+        }
+
+        #header::after,
+        #header::before {
+            content: '';
+            height: 130px;
+            display: block;
+            position: absolute;
+            background-position: top center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0
+        }
+
+        #header::after {
+            width: 305px;
+            top: 0;
+            right: 0;
+            background-image: url(/images/dakini/right.png);
+            z-index: +3
+        }
+
+        #header::before {
+            width: 389px;
+            top: 0;
+            left: 0;
+            background-image: url(/images/dakini/left.png);
+            z-index: +2
+        }
+
+        #footer {
+            font-size: 0.9em;
+            position: fixed;
+            bottom: 0;
+            background-color: #444;
+            text-align: center;
+            padding: 0.2em 0;
+            color: #97141b;
+            background-color: #e9deda;
+            font-family: verdana, arial, helvetica, sans-serif;
+            z-index: +100
+        }
+
+        #footer a {
+            position: relative;
+            color: #97141b;
+            font-weight: bold;
+            padding: 0.3em 2em;
+            display: inline-block;
+            text-decoration: none;
+            transition: All 0.25s ease;
+            -webkit-transition: All 0.25s ease;
+            -moz-transition: All 0.25s ease;
+            -o-transition: All 0.25s ease;
+            -ms-transition: All 0.25s ease;
+            -moz-box-shadow: inset 0px 0px 0px #e9deda;
+            -webkit-box-shadow: inset 0px 0px 0px #e9deda;
+            box-shadow: inset 0px 0px 0px #e9deda;
+            z-index: +1
+        }
+
+        #footer a::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: -1;
+            -webkit-border-radius: 0.5em;
+            -moz-border-radius: 0.5em;
+            border-radius: 0.5em;
+            transition: All 0.25s ease;
+            -webkit-transition: All 0.25s ease;
+            -moz-transition: All 0.25s ease;
+            -o-transition: All 0.25s ease;
+            -ms-transition: All 0.25s ease;
+            -moz-box-shadow: inset 0px 0px 1em #e9deda;
+            -webkit-box-shadow: inset 0px 0px 1em #e9deda;
+            box-shadow: inset 0px 0px 1em #e9deda;
+            -moz-opacity: 0.00;
+            opacity: 0.00;
+            transform: scale(1, 0);
+            -webkit-transform: scale(1, 0);
+            -moz-transform: scale(1, 0);
+            -o-transform: scale(1, 0);
+            -ms-transform: scale(1, 0)
+        }
+
+        #footer a:hover {
+            text-decoration: none
+        }
+
+        #footer a:hover::before {
+            -moz-opacity: 1.00;
+            opacity: 1.00;
+            transform: scale(1, 1);
+            -webkit-transform: scale(1, 1);
+            -moz-transform: scale(1, 1);
+            -o-transform: scale(1, 1);
+            -ms-transform: scale(1, 1)
+        }
+
+        #side_bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 1em 1em;
+            width: 25%;
+            min-height: 100%;
+            background-image: url("/images/dakini/sidebar_bk.jpg");
+            background-repeat: repeat-y;
+            background-position: left top;
+            background-color: #e5cdc4;
+            border-right: 5px solid #e9deda;
+            z-index: +25
+        }
+
+        #side_bar h1 {
+            background: #002f75;
+            color: #fee;
+            margin: 1em;
+            padding: 0.8em 0;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            -webkit-border-radius: 0.4em;
+            -moz-border-radius: 0.4em;
+            border-radius: 0.4em
+        }
+
+        #side_bar h1:first-child {
+            background-color: #99141B;
+            margin: 2em 1em 1em 1em
+        }
+
+        #menu {
+            box-sizing: border-box;
+            background-color: #f4a932;
+            border: #f80 solid 1px;
+            text-align: center;
+            position: absolute;
+            margin: 0.3em 0;
+            z-index: +100
+        }
+
+        #menu.sticky {
+            position: fixed;
+            top: 0.0001px;
+            margin: 0
+        }
+
+        #menu a {
+            box-sizing: border-box;
+            position: relative;
+            width: 20%;
+            color: #97141b;
+            font-weight: bold;
+            padding: 0.3em 0;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            border-right: #f80 solid 1px;
+            border-left: #f80 solid 1px;
+            transition: All 0.25s ease;
+            -webkit-transition: All 0.25s ease;
+            -moz-transition: All 0.25s ease;
+            -o-transition: All 0.25s ease;
+            -ms-transition: All 0.25s ease;
+            -moz-box-shadow: inset 0px 0px 0px #f4a932;
+            -webkit-box-shadow: inset 0px 0px 0px #f4a932;
+            box-shadow: inset 0px 0px 0px #f4a932;
+            z-index: +1
+        }
+
+        #menu a::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            background-color: #f9d49c;
+            z-index: -1;
+            transition: All 0.25s ease;
+            -webkit-transition: All 0.25s ease;
+            -moz-transition: All 0.25s ease;
+            -o-transition: All 0.25s ease;
+            -ms-transition: All 0.25s ease;
+            -moz-box-shadow: inset 0px 0px 1em #f4a932;
+            -webkit-box-shadow: inset 0px 0px 1em #f4a932;
+            box-shadow: inset 0px 0px 1em #f4a932;
+            -moz-opacity: 0.00;
+            opacity: 0.00;
+            transform: scale(1, 0);
+            -webkit-transform: scale(1, 0);
+            -moz-transform: scale(1, 0);
+            -o-transform: scale(1, 0);
+            -ms-transform: scale(1, 0)
+        }
+
+        #menu a:hover {
+            text-decoration: none
+        }
+
+        #menu a:hover::before {
+            -moz-opacity: 1.00;
+            opacity: 1.00;
+            transform: scale(1, 1);
+            -webkit-transform: scale(1, 1);
+            -moz-transform: scale(1, 1);
+            -o-transform: scale(1, 1);
+            -ms-transform: scale(1, 1)
+        }
+
+        #notice {
+            z-index: 99999;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            box-sizing: border-box;
+            padding: 1em 0;
+            text-align: center;
+            height: 100px;
+            overflow-y: auto;
+            color: #fff;
+            font-weight: bold;
+            transition: All 0.25s ease;
+            -webkit-transition: All 0.25s ease;
+            -moz-transition: All 0.25s ease;
+            -o-transition: All 0.25s ease;
+            -ms-transition: All 0.25s ease;
+            transform-origin: 0 50%;
+            -webkit-transform-origin: 50% 0;
+            -ms-transform-origin: 50% 0;
+            -moz-transform-origin: 50% 0;
+            -o-transform-origin: 50% 0;
+            transform: scale(1, 1);
+            -webkit-transform: scale(1, 1);
+            -moz-transform: scale(1, 1);
+            -o-transform: scale(1, 1);
+            -ms-transform: scale(1, 1)
+        }
+
+        #notice .notice_close {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.5em;
+            height: 100%;
+            width: 5em;
+            text-align: left;
+            cursor: pointer;
+            border-right: 1px solid #933;
+            color: #000
+        }
+
+        #notice .notice_close:hover {
+            color: #900;
+            background-color: rgba(0, 0, 0, 0.25)
+        }
+
+        #notice.hidden {
+            transform: scale(1, 0);
+            -webkit-transform: scale(1, 0);
+            -moz-transform: scale(1, 0);
+            -o-transform: scale(1, 0);
+            -ms-transform: scale(1, 0)
+        }
+
+        #contents {
+            margin: 0 18% 2em 25%;
+            background-color: white;
+            box-sizing: border-box;
+            padding: 2em 0 2em 0;
+            min-height: 80%
+        }
+
+        #contents p {
+            padding: 0 1em;
+            margin: 0.5em 1em
+        }
+
+        #contents h1,
+        #contents h2,
+        #contents h3 {
+            font-size: 1em;
+            font-weight: bold;
+            color: #700;
+            margin: 0.5em 0
+        }
+
+        #contents h1 {
+            font-size: 1.2em;
+            text-align: center
+        }
+
+        #contents h1,
+        #contents h2,
+        #contents h3 {
+            padding: 45px 1em 0 1em;
+            background-image: url("/images/dakini/h_top.jpg");
+            background-repeat: repeat-x
+        }
+
+        #contents h2 {
+            text-align: right
+        }
+
+        #contents h3 {
+            text-align: left
+        }
+
+        #english {
+            direction: ltr;
+        }
+
+        #english h1 {
+            text-align: center;
+        }
+
+        #english h2 {
+            text-align: left;
+        }
+
+        #english h3 {
+            text-align: right;
+        }
+
+        #picture {
+            display: block;
+            position: absolute;
+            top: 2.5em;
+            left: 0;
+            margin: 0;
+            width: 24.5%;
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        #side_bar img {
+            display: block;
+            position: absolute;
+            top: 2.5em;
+            left: 0;
+            margin: 0;
+            width: 100%;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+            transition: all 3s;
+            opacity: 0;
+        }
+
+        #side_bar img:first-of-type {
+            position: relative;
+        }
+
+        #side_bar img.show {
+            opacity: 1;
+        }
+
+        #side_bar div {
+            transition: all 0.25s;
+            transform-origin: top;
+            transform: rotateX(90deg);
+            display: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #side_bar div.hide {
+            transform: rotateX(90deg);
+            display: block;
+        }
+
+        #side_bar div.show {
+            transform: rotateX(0deg);
+            display: block;
+        }
+        /*#index,
+        #guides,
+        #english,
+        #links,
+        #terms,
+        #contact,*/
+
+        #contents>div {
+            padding: 0;
+            margin: 0;
+            transform: rotateX(90deg);
+            height: 0;
+            transition: all 0.2s;
+            transform-origin: top;
+        }
+        /*#index.hide_section,
+        #guides.hide_section,
+        #english.hide_section,
+        #links.hide_section,
+        #terms.hide_section,
+        #contact.hide_section,*/
+
+        #contents>div.hide_section {
+            transform: rotateX(90);
+            height: auto;
+        }
+        /*#index.show_section,
+        #guides.show_section,
+        #english.show_section,
+        #links.show_section,
+        #terms.show_section,
+        #contact.show_section,*/
+
+        #contents>div.show_section {
+            transform: rotateX(0);
+            height: auto;
+        }
+
+        @media screen and (max-width: 680px) {
+            #menu {
+                font-size: 0.9em
+            }
+            #footer a {
+                padding: 0.3em 0.5em
+            }
+            #side_bar {
+                position: relative;
+                top: 0;
+                width: 100%;
+                min-height: initial;
+                border-top: 5px solid #e9deda;
+                border-right: none
+            }
+            #contents {
+                margin: 0;
+                background-color: white;
+                box-sizing: border-box;
+                padding: 2em 0 0.5em 0
+            }
+            #picture {
+                display: none
+            }
+        }
+
+        body.english #contents,
+        body.english #side_bar {
+            direction: ltr
+        }
+
+        body.english #contents h2,
+        body.english #side_bar h2 {
+            text-align: left
+        }
+
+        body.english #contents h3,
+        body.english #side_bar h3 {
+            text-align: right
+        }
+    </style>
+    <script>
+        valid_pages = {};
+        var SLIDES = 4;
+        var _active_SLIDE = SLIDES;
+
+        function show_notice() {
+            document.getElementById("notice").classList.remove('hidden');
+        };
+
+        function hide_notice() {
+            document.getElementById("notice").classList.add('hidden');
+        };
+
+        function getPosition(element) {
+            var xPosition = 0;
+            var yPosition = 0;
+            while (element) {
+                xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+                yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+                element = element.offsetParent;
+            }
+            return {
+                x: xPosition,
+                y: yPosition
+            };
+        }
+
+        function switch_page(skip_animation) {
+            var side_bars = document.getElementById('side_bar').children
+            var page_name = 'index'
+            if (document.URL.indexOf('#') >= 0) {
+                page_name = document.URL.split('#').pop();
+            }
+            if (valid_pages[page_name] == undefined)
+                page_name = 'index'
+            if (skip_animation) {
+                for (var key in valid_pages) {
+                    if (valid_pages[key]) {
+                        valid_pages[key].className = '';
+                    }
+                }
+                valid_pages[page_name].className = 'show_section';
+                for (var i in side_bars) {
+                    side_bars[i].className = '';
+                }
+                document.getElementById(valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow').className = 'hide';
+                setTimeout(function(page_name) {
+                    document.getElementById(valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow').className = 'show';
+                    document.getElementById('side_bar').style['min-height'] = document.getElementById('inner_container').clientHeight + "px";
+                }, 10, page_name);
+                return;
+            } else {
+                var from;
+                for (var key in valid_pages) {
+                    if (valid_pages[key].className == 'show_section') {
+                        from = key;
+                        break;
+                    }
+                }
+                if (from && valid_pages[from]) {
+                    var side_bars = document.getElementById('side_bar').children
+                    for (var i in side_bars) {
+                        if (side_bars[i].className && side_bars[i].className != '')
+                            side_bars[i].className = 'hide';
+                    }
+                    valid_pages[from].className = 'hide_section';
+                    animation_link_interval = window.setTimeout(function(from, to) {
+                        valid_pages[from].className = ''
+                        valid_pages[to].className = 'show_section'
+                        for (var i in side_bars) {
+                            side_bars[i].className = '';
+                        }
+                        document.getElementById(valid_pages[page_name].has_sidebar ? (to + '_sb') : 'slideshow').className = 'hide';
+                        setTimeout(function(page_name) {
+                            var sb_target = valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow';
+                            var height = document.getElementById('inner_container').clientHeight;
+                            document.getElementById('side_bar').style['min-height'] = height + "px";
+                            document.getElementById(sb_target).className = 'show';
+                        }, 10, to);
+                    }, 250, from, page_name);
+                } else {
+                    switch_page(true);
+                }
+            }
+        }
+
+        function setup_sticky_menu() {
+            menu = document.getElementById('menu');
+            menu.className = "";
+            menu_y_position = 0 //- menu.offsetTop;
+            var element = menu;
+            while (element) {
+                menu_y_position += (element.offsetTop + element.clientTop);
+                element = element.offsetParent;
+            }
+            window.addEventListener("scroll", function(e) {
+                if ((menu.className == "sticky") && (document.body.scrollTop <= menu_y_position)) menu.className = "";
+                else if ((menu.className == "") && (document.body.scrollTop > menu_y_position)) menu.className = "sticky";
+            });
+        }
+
+        function rotate_slides() {
+            _active_SLIDE++;
+            if (_active_SLIDE >= SLIDES)
+                _active_SLIDE = 0;
+            for (var i = 0; i < SLIDES; i++) {
+                document.getElementById('sb_image' + i).className = '';
+            }
+            document.getElementById('sb_image' + _active_SLIDE).className = 'show';
+        }
+
+        function init_slideshow() {
+            setInterval(rotate_slides, 7000);
+            rotate_slides();
+        }
+
+        function init_document() {
+            valid_pages.index = document.getElementById('index');
+            valid_pages[''] = document.getElementById('index');
+            valid_pages.guides = document.getElementById('guides');
+            valid_pages.guides.has_sidebar = true;
+            valid_pages.english = document.getElementById('english');
+            valid_pages.articles = document.getElementById('articles');
+            valid_pages.links = document.getElementById('links');
+            valid_pages.commitment = document.getElementById('commitment');
+            valid_pages.terms = document.getElementById('terms');
+            valid_pages.contact = document.getElementById('contact');
+            var all_links = document.getElementsByTagName('a');
+            baseURL = document.URL.split('#').shift();
+            for (var i in all_links) {
+                if (all_links.hasOwnProperty(i) && (all_links[i].href.slice(0, baseURL.length + 1) == baseURL + '#') && valid_pages[all_links[i].href.split('#').pop()]) {
+                    // console.log("updating event for link to:", all_links[i].href);
+                    all_links[i].onclick = function(e) {
+                        // console.log(e);
+                        window.location = e.target.href;
+                        window.scrollTo(0, 0);
+                        switch_page();
+                        return false;
+                    }
+                }
+            }
+            init_slideshow();
+            setup_sticky_menu();
+            init_links();
+            switch_page(true);
+        }
+        window.addEventListener("load", init_document);
+
+
+        function init_links() {
+            var links = [
+                [
+                    "קישורים טנטריים בארץ ובעולם", [
+                        ["www.nomind.co.il/activities.aspx?main_cat=63", 'סדנאות טנטרה ומידע בפורטל נו-מיינד - טנטרה לפי אושו (אושו-טנטרה), נאו-טנטרה, זוגיות וכיו"ב.'],
+                        ["www.tantra.co.il", "פורטל הטנטרה - אתר הטנטרה הותיק משנת 2000. מרכז מידע רב: מאמרים, סדנאות ופעילויות, פורום ועוד."],
+                        ["www.tantraisrael.co.il", "פורטל הטנטרה הישראלי החדש, בניהולם של סוג'י ומורן."],
+                        ["he.wikipedia.org/wiki/טנטרה",
+                            "מידע על טנטרה לפי ויקיפדיה ישראל (בעברית). שימו לב שהמידע שונה מהמידע המפורסם על טנטרה באנגלית."
+                        ],
+                        ["en.wikipedia.org/wiki/Tantra", "מידע על טנטרה לפי ויקיפדיה העולמית. שימו לב שהמידע שונה מהמאמר המפורסם בויקיפדיה שראל."],
+                        ["en.wikipedia.org/wiki/Vajrayana", "מידע על טנטרה טיבטית לפי ויקיפדיה העולמית."]
+                    ]
+                ],
+                [
+                    "קישורים למנחים ומטפלים השואבים גם מאומנות הדקה / דקיני", [
+                        ["www.lotus-way.com", "דרך הלוטוס - מיניות בריאה באופן טבעי."],
+                        ["www.rimon-center.co.il", "מרכז רימון, מרכז למיניות בריאה וטבעית."],
+                        ["www.lev-esh.com", "ורדה לב-אש, דקיני מוסמכת העוסקת גם בהדרכה"],
+                        ["www.touch.org.il", "ערן רוטשילד, דקה מומסך העוסק גם בעיסוי ובתחומים נוספים."],
+                        ["www.njoyer.com", "אלכס ושלי, זוג מנחים באמנויות הטנטרה והדקה / דקיני."],
+                        ["www.liatlevi.org", "ליאת לוי, נגיעות של טנטרה ממסורות שונות המשתלבות ללימוד מעמיק"],
+                        ["www.dakini.co.il", "לי רוזי, דקיני מוסמכת המנחה באמנויות הטנטרה."],
+                        ["www.hamaga.co.il", 'האתר של לי ויובל רוזי, "דרך המגע".'],
+                        ["www.zugot-zugot.co.il", "מיה ויו-חנן, אתר המתאר את הנחייתם באמנויות הטנטרה."],
+                        ["www.tantra.org.il", "בועז סופר, דקה מוסמך, מנחה לטנטרה, ביו-אנרגיה ותזונה."]
+                    ]
+                ],
+                [
+                    "קישורים למנחי טנטרה (ולא טנטרה) מסגנונות אחרים", [
+                        ["www.irisyotvat.com", "איריס יוטבת, מחלוצי הטנטרה בישראל, שהיום הינה מורה רב תחומית."],
+                        ["www.hayacaspi.com", "חיה כספי, מחלוצות הטנטרה בישראל, מנחת טנטרה עוד משנת 2000, בסגנונה האישי, רב ההשפעות"],
+                        ["www.oshotantrainstitute.com", "שאנטי גיטמה, מהמורות הבכירות בדרכו של אושו (אושו טנטרה)."],
+                        ["kabalove.org", "הגן - בית הספר לאהבה וקבלה של אוהד אזרחי ודואן שרי."],
+                        ["www.tantra-yoga.co.il", "דורית דביר, העוסקת בטנטרה יוגה."],
+                        ["www.tantralev.co.il", "סוג'י ומורן, בסגנונם המיוחד, הכולל השפעות מעולם הפסיכודרמה ועולמו של אושו."],
+                        ["www.kesemhamaga.co.il", "נחמה ויורם ,זוג מזה 36 שנים, מקיים אורח חיים טנטרי בזוגיות, הורות, עבודה וקרירה, ומזמין אתכם."],
+                        ["www.simply-yoga.co.il", "מעיין צח, מוסמכת להוראת יוגה, מדיטציה וטנטרה על ידי פדרציית היוגה 'אטמן'."],
+                        ["www.metaplim.co.il/a.asp?p=20266", "ליאת לוי, מורה מעשית לטנטרה, ומקיימת מפגשים אישיים."],
+                        ["www.benefrat.org", "בן ואפרת, וגישתם הייחודית לתחום הטנטרה."],
+                        ["www.randeren.com", "רן דרן, מורה לטנטרה-יוגה לפי המסורת היוגית של 'אגמה'."],
+                        ["www.partylim.com", "לימור בנדל, סקסולוגית ומורה לטנטרה (סקסולוגיה טנטרית)."],
+                        ["www.tantraway.co.il", "מיכה וטל, מנחים למיניות מלאת אהבה."]
+                    ]
+                ],
+                [
+                    "קישורים לאתרים מעניינים נוספים", [
+                        ["www.designful.co.il", "עיצוב אתרים איכותי (עיצבו את שלנו)."]
+                    ]
+                ]
+            ];
+            var template = '';
+            var section;
+            var tmp;
+            var link;
+            for (var i in links) {
+                if (!links.hasOwnProperty(i)) continue;
+                console.log("parsing: (" + i + "):", links[i]);
+                tmp = document.createElement('h2');
+                tmp.innerHTML = links[i].shift();
+                document.getElementById('links').appendChild(tmp);
+                section = document.createElement('ul');
+                document.getElementById('links').appendChild(section);
+                links[i] = links[i][0];
+                while (links[i][0]) {
+                    console.log("---:", links[i][0]);
+                    tmp = document.createElement('li');
+                    link = document.createElement('a');
+                    tmp.style = 'margin:0.5em';
+                    link.href = "http://" + links[i][0][0];
+                    link.innerHTML = links[i][0][1];
+                    links[i].shift();
+                    tmp.appendChild(link)
+                    section.appendChild(tmp);
+                }
+            }
+
+            // <h2>
+            // <%= link_group[0] %>:
+            // </h2>
+            // <ul>
+            // <% link_group[1].each do |lnk| %>
+            // <li style='margin:0.5em;' ><a href='http://<%= lnk[0] %>'><%= lnk[1] %></a></li>
+            // <% end -%>
+            // </ul>
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header">
+        <a class="home" href="#"></a>
+    </div>
+    <div class="hidden" id="notice"><a class="notice_close" onclick="hide_notice()">X</a>
+        <div id="notice_text"></div>
+    </div>
+    <div id="container">
+        <div id="inner_container">
+            <div id="menu"><a href="#">אודות</a><a href="#guides">מנחים</a><a href="#articles">מאמרים</a><a href="#english">English</a></div>
+            <div id="contents">
+                <div id="index">
+                    <h2>מרכז "להיות" - מי אנחנו?</h2>
+                    <p>מרכז "להיות" הינו מרכז להכשרת מנחי טנטרה לפי מסורת ואמנות הדקה / דקיני.</p>
+                    <p>
+                        המרכז הוקם בשנת 2006 על ידי בועז שגב, שהוא מייסד אמנות הדקה / דקיני בישראל, והוסמך כמנחה לאמנות הדקה / דקיני עוד בשנת 2003.
+                    </p>
+                    <p>כיום מסלול הנחיה המובנה והמוכח של מרכז "להיות" הינו מסלול ההכשרה המעמיק, המעשי והמקצועי בישראל. </p>
+                    <h2>מה היא אמנות הדקה / דקיני?</h2>
+                    <p>אמנות הדקה / דקיני הינה אמנות טנטרית עתיקה, אינטימית, ועוצמתית, הדורשת מיומנות רוחנית מעשית.</p>
+                    <p>אין המדובר באמנות של ריפויי או שיפור עצמי - המדובר באמנות רוחנית אמיתית המיועדת לאפשר לנו לדעת את הטבע של עצמנו, לחיות מתוך אמת וחמלה ולזכות בהארה.</p>
+                    <p>הדקה / דקיני (רקדני שמיים) עוסקים בעיקר בחניכה אישית לתרגול טנטרה דרך מיניות, חלימה, שינה ומוות.</p>
+                    <h2>מנחי מרכז "להיות"</h2>
+                    <p>
+                        בועז שגב כבר אינו מקבל תלמידים חדשים, אך המורים שהוא הכשיר ממשיכים ללמד ולהדריך באמנות הדקה / דקיני ולהכשיר מנחים חדשים.
+                    </p>
+                    <p>המנחים במרכז להיות הינם עצמאיים, כאשר כל אחד מהם עבר הכשרה מעמיקה ומעשית ועובד באופן התואם את בחירותיו והבנותיו האישיות.</p>
+                    <p>
+                        כיום, את מסלול ההכשרה ניתן לעבור באמצעות סדנאות שמנחים מנחים שהוסמכו על ידי מרכז "להיות" ושלקחו על עצמם את <a href='#commitment'>המחויבות של הדקה / דקיני</a>, ואת המחויבות לשמור על מבנה הלימוד המוכח והמעמיק.
+                    </p>
+                    <p>הפניה למנחים הינה לכל מנחה בנפרד ובאופן עצמאי. כך שלתלמידים יש את ההזדמנות לאתר מנחה מתאימ/ה שיעזרו להם לשמור על סביבת לימוד בטוחה התואמת את גבולותיהם האישיים.</p>
+                    <p>בסיום הלימודים אצל המנחים השונים, תוכלו להגיש מועמדות לקבלת תעודה של מרכז "להיות", לפי המלצה של מוריכם.</p>
+                    <p><a class="button" href="#guides">לחצו כאן לרשימת מנחים</a></p>
+                    <h2>למי מיועדים הלימודים?</h2>
+                    <p>מסלול הלימודים כמנחה טנטרה לפי אמנות הדקה / דקיני אינו מתאים לכל אחד.</p>
+                    <p>המסלול מתאים רק לאנשים אמיצים המוכנים לחולל שינוי עוצמתי ואמיתי בחייהם, תוך שהם נחשפים באופן מעמיק ואינטימי לרבדים העמוקים ביותר שבהווייתם.</p>
+                    <p>מומלץ להגיע למסלול הלימודים רק לאחר ניסיון באמנות רוחנית מעשית כגון יוגה, מדיטציה (כגון ויפאסנה) וכיוב'.</p>
+                    <p><b>שימו לב</b>: אין המדובר בטנטרה לפי בית מדרשו של אושו. על כן ניסיון קודם בטנטרה לפי דרכו של אושו אינו רלוונטי.</p>
+                    <p><a class="button" href="#training">למידע נוסף</a></p>
+                    <h2>מחפשים "אושו-טנטרה", "נאו-טנטרה", או נושאים אחרים?</h2>
+                    <p>מרכז "להיות" מקדיש עצמו ללימודי טנטרה מעמיקים לפי מסורת ואמנות הדקה / דקיני.</p>
+                    <p>כמובן שישנם עוד נושאים ותחומים רבים שהתפתחו מתוך אמנות הטנטרה או שניסו להתאים את הידע הטנטרי לתרבות המערב.</p>
+                    <p>אם אתם מחפשים מידע, סדנאות או מפגשים עם מורים בנושאים אחרים, נסו <a href="#links">בעמוד הקישורים שלנו.</a></p>
+                </div>
+                <div id="guides">
+                    <h2>Guides</h2>
+                </div>
+                <div id="commitment">
+                    <h2>
+                  משמעת ותרגול
+                  </h2>
+                    <p>
+                        במהלך הלימודים עלינו לשמור על מספר כללי משמעת בסיסיים שיאפשרו מרחב בטוח ואינטנסיבי לטרנספורמציה עמוקה ולימוד מעמיק. כללים אלו פרוסים להלן.
+                    </p>
+                    <p>
+                        אנו מבקשים לשמור על כללים אלו בכל תקופת תרגול על מנת ולשמור על תודעה, כוונה וסביבה שיתמכו בתרגול האישי שלנו.
+                    </p>
+                    <h2>
+                  נוכחות מודעת
+                  </h2>
+                    <p>
+                        <b>
+                  הימנעות מאלימות
+                  </b> - נמנע מהתנהגות אלימה, או מאישור התנהגות אלימה.
+                    </p>
+                    <p>
+                        <b>
+
+                  הימנעות מלקיחת דברים שלא נתקבלו באופן חופשי
+                  </b> - לא נגנוב ולא ניקח ללא רשות חפצים שלא ניתנו לנו ו/או הועמדו לרשותנו באופן חופשי.
+                    </p>
+                    <p>
+                        <b>
+                  דיבור נכון
+                  </b> - נשמור על דיבור נכון מתוך כבוד ליושרה הפנימית שלנו. נימנע מרכילות סרק, משקרים ומתקשורת לא ראויה.
+                    </p>
+                    <p>
+                        על מנת ולחזק נקודה זו אנו נבלה חלק מזמני המסלול
+                        <b>
+                  בשתיקה מלאה
+                  </b> תוך שאנו מצמצמים את התקשורת לצרכים דחופים וחיוניים בלבד.
+                    </p>
+                    <p>
+                        <b>
+                  מין נכון
+
+                  </b> - לא נקיים יחסי מין באופן שעלול לפגוע בנו או בסביבתנו.
+                    </p>
+                    <p>
+                        על מנת ולחזק נקודה זו אנו
+                        <b>
+                  לא נקיים מגע מיני
+                  </b> (גם לא עם עצמנו) למעט בזמני התרגול וכחלק מהתרגול עצמו.
+                    </p>
+                    <p>
+                        <b>
+                  הימנעות מחומרים שמשפיעים על התודעה
+                  </b> - נימנע באופן מלא מסיגריות, סמים, אלכוהול וכיוב'.
+                    </p>
+                    <p>
+                        על מנת ולחזק נקודה זו לאורך זמני הקורסים אנו נמנע מאכילת מוצרי בשר (בקר עוף דגים וכיוב') ומאכלים שחורים (ביצים, בצל, שום, פטריות, צנון, בצל ירוק ועירית) כמו כן אנו נצמצם ככל הניתן אכילת מזונות מן החי (ביצים, גבינות, חלב, דבש וכיוב').
+                    </p>
+                    <h2>
+                  הפרת הכללים
+
+                  </h2>
+                    <p>
+                        ההנהלה ו/או הצוות המנחה שומרים על זכותם לסלק ללא החזר תשלום כל אדם ו/או זוג אשר יפר את כללי המשמעת ו/או יפריע למהלך קיומם של הלימודים בכל אופן.
+                    </p>
+                    <h2>
+                  מחוייבות הדקה / דקיני - המחויבות האישית שלנו
+
+                  </h2>
+                    <p>
+                        אנו, אשר התקבצנו כאן באתר זה בכדי ללמד ולתרגל את האמנות המקודשת של מסורת הדקה / דקיני, מבטאים בזאת את מחויבותנו האישית כדלקמן:
+                    </p>
+                    <blockquote>
+                        <p>
+                            1) אנו מקדשים את כל פעולותנו ובעשיה זו אנו מקדישים את כל פעולותינו ופירות פעולותינו לטבעם הבסיסי של כל בעלי התודעה ולמודעות אליו - זהו התרגול של <em>הקדשה</em>, של השחרור <i>מקארמה</i>.
+                        </p>
+                        <p>
+                            2) מתוך מודעות לטבע הבסיסי של כולנו כאשר הוא מתבטא דרך גוף ואגו, אנו נלמד, ננחה ונתרגל את האמנות המקודשת של הדקה / דקיני - זהו התרגול של <i>נמסטה </i>, של התבוננות <i>באלוהי</i>.
+
+                        </p>
+                        <p>
+                            3) כל הלימוד, ההנחיה והתרגול יעשו מתוך אהבה ותמיכה בשחרור של כל בעלי התודעה מחשיבה אשלייתית עד זיהויי מוחלט וחוויתי של הטבע המואר והבסיסי של כולנו - זהו התרגול של <i>בודהיציטה</i>, של <i>אהבה ללא עצמי</i>.
+                        </p>
+                    </blockquote>
+                    <p>
+                        למען בהירות משותפת, אנו ממשיכים ומפרטים את המחויבות שלנו כדלקמן:
+                    </p>
+                    <blockquote>
+                        <p>
+                            1) אנו מזהים כי הטנטרה הינה מעבר לכל <i>פן </i> או <i>רעיון</i> יחיד, על כן אנו <b>לא</b> נתחייב לריפוי או שיפור של העצמי לבדו או כל חלק ממנו - זו המחויבות למסע השלם.
+
+                        </p>
+                        <p>
+                            2) אנו מזהים כי הטנטרה הינה מעבר <i>לדואליות של קבלה ודחייה </i>, על כן אנו ננהג, ננחה, נלמד ונתרגל מתוך הקשבה ונוכחות וללא שיפוט או דעות קדומות - זו המחויבות לנוכחות במה שיש .
+                        </p>
+                        <p>
+                            3) אנו מזהים שהטנטרה הינה מעבר <i>ליכולת להבין רעיונות או מושגים</i>, על כן אנו נלמד וננחה את אמנות הדקה / דקיני מתוך תרגול <i>וחוויה ישירה </i> - זו המחויבות לשחרור מאשליה.
+                        </p>
+                    </blockquote>
+                    <p>
+                        למען בהירות של מושגים ושפה, אנו מסכימים עם המושגים הבאים:
+                    </p>
+                    <blockquote>
+
+                        <p>
+                            <b>טנטרה</b> הינה מילה שבאה מהשורשים Tantoi ו- Trayati ומייצגת את רגע ההארה. רישים הינדים <i>ראו</i> זאת כ“אריגה“ של הגוף האנרגטי במרקמו האינסופי של היקום ומצאנו שהמשמעות המילולית של המילה הינה "מארג". בטיבט אותו המראה פורש
+                            כהתרחבות של הגוף האנרגטי אל עבר האינסוף ומצאנו שהמשמעות המילולית של המילה הינה "התרחבות".
+                        </p>
+                        <p>
+                            <b>הארה</b> הינה <i>חוויה</i> ישירה וידיעה מוחלטת של <i>הטבע הבסיסי</i> של מהותנו. <i>החוויה הישירה</i> הינה הכוונה היחידה של כל תרגול טנטרי.
+
+                        </p>
+                        <p>
+                            <b>שערים</b> (<em>בארדו</em>) מאפשרים לנו חוויה ישירה של אותו טבע בסיסי של מהותנו. על ידי מעבר מודע בשערים אלו אנו יכולים להגיע לטנטרה. השערים העוצמתיים מתקיימים, בין היתר, במוות, במיניות, בנשימה, בחלימה ובנוכחות.
+                        </p>
+                        <p>
+                            <b>הדקה / דקיני</b> הידועים גם <i>כרקדני השמיים</i> נמצאים כמשרתים קדושים לטבע האלוהי שבתוכנו ומכהנים בשם <i>הטבע הבסיסי</i> של מהותנו. תפקידם ללוות את בעלי התודעה <i>לשערים</i> השונים בהם תרגלו דרך הטכניקות אותן הכירו.
+
+                        </p>
+                    </blockquote>
+                    <p>
+                        זו המחויבות שלנו. אם אי פעם נסטה ממנה, נסיר עצמנו (או שנוסר) מאתר זה. הנוכחות שלנו כאן באתר מהווה ראיה לכך שקראנו את המחויבות, כי אנו שומרים על עצמנו מעודכנים ביחס לנוסחה שעלול להשתנות, כי אנו מסכימים לתוכנה וכי אנו לוקחים אותה על עצמנו מתוך רצון חופשי
+                        ומודעות.
+                    </p>
+                </div>
+                <div id="terms">
+                    <h2>
+                  תנאי שימוש באתר
+                  </h2>
+                    <p>
+                        האתר, לרבות תוכנו וצורתו, מוגנים על ידי זכויות היוצרים השונות.
+                    </p>
+                    <p>
+                        הפרסום באתר הוא על אחריות המפרסמים בלבד ואין האתר ו/או מי מהנהלתו אחראים לתוכן הפרסום, אמיתותו, זכויות היוצרים בהן הוא משתמש (ככל ואלו קיימות), ו/או השירותים הניתנים במסגרתו.
+                    </p>
+                    <p>
+                        הפרסום הינו בשליטתם המלאה של המפרסמים, ויש לפנות אליהם בכל עניין הקשור בפרסום זה, לרבות לעניין הפרה של זכות יוצרים ו/או תוכן מוגן. אין לפרסם באתר זה פרסום שאינו אמת ו/או שיש בו משום הפרה של זכויות יוצרים ו/או הפרת דין כלשהי.
+                    </p>
+                    <p>
+                        אין לשלוח הודעות פרסומיות לאיזה מכתובות הדוא"ל המנויות באתר זה.
+                    </p>
+                </div>
+                <div id="contact">
+                    <h1>יצירת קשר</h1>
+                    <p>
+                        בעניין הדרכה טנטרית ובכל הקשור לענייני טנטרה, יש לפנות למנחים המפרסמים עצמם באתר, בעמוד המנחים.
+                    </p>
+                    <p>
+                        בכל הקשור בזכויות יוצרים וכיו"ב, ניתן לפנות לבועז שגב בנוסף לפרסם הרלוונטי ואנו נדאג להסרת כל פרסום שמפר זכויות יוצרים.
+                    </p>
+                </div>
+                <div id="links">
+                </div>
+                <div id="english">
+                    <h1>Thank You!
+                    <span style='font-size:0.8em;'>(...and boaz says goodbye)</span>
+                    </h1>
+                    <p id='ask_boaz_message' style='display:none;'>
+                        <a href='/' onclick='document.getElementById("boaz_message").show(); return false;' class='slide'>
+                    Although you can still learn with many of the teachers that boaz has certified over the years, Boaz will not be accepting any new students. To read his message, click here.
+                    </a>
+                    </p>
+                    <div id='boaz_message' class='container_only'>
+                        <h2>
+                    Thank you for the journey...
+                    </h2>
+                        <p>
+                            This has been a wonderful and sacred journey in my life.</p>
+                        <p>
+                            I thank all the wonderful people who shared this wonderful journey with me - especially the students who have taught me so much...
+                        </p>
+                        <h2>
+                    and Goodbye...</h2>
+                        <p>
+                            Although my beloved students taught me so much, and have helped me discover the true meaning of beauty and love, it is time to say goodbye.
+                        </p>
+                        <p>
+                            Our time together was empowering, fun and full of playful discovery...
+                        </p>
+                        <p>
+                            And although I will keep on my journey, <b>I will not be offering teachings or receiving new students on a professional level</b>.
+                        </p>
+                        <h2>
+                    May we all...
+                    </h2>
+                        <p>
+                            May we all have happiness and it's causes.
+                        </p>
+                        <p>
+                            May we all be free of suffering and it's causes.
+                        </p>
+                        <p>
+                            May we all abide in enlightenment, free of deluded thought.
+                        </p>
+                        <h2>
+                    ...I take refuge.
+                    </h2>
+                        <p>
+                            I take refuge in the Buddha, the Dharma, and the Sanga.
+                        </p>
+                        <p>
+                            I take refuge in the Guru, the Yidam, and the Dakini.
+                        </p>
+                        <p>
+                            Non-Dual, like the sun and the many rays, I offer the merit of this life and any other to the self-liberated state of being that is neither cause nor result.
+                        </p>
+                        <p>
+                            Namaste,
+                            <br /> Boaz.
+                        </p>
+                        <hr />
+                    </div>
+                    <script>
+                        // document.getElementById("boaz_message").show();
+                        document.getElementById("ask_boaz_message").show();
+                        document.getElementById("boaz_message").hide();
+                    </script>
+                    <h2>
+                    A few words, before we begin
+                    </h2>
+                    <div class='contact_float'>
+                        <h2>Want more information?</h2>
+                        <p>
+                            <a href="#guides">Contact any of the certified teachers.</a>
+                        </p>
+                    </div>
+                    <p>
+                        Learning to become a Daka / Dakini is not a decision to be made lightly. Being a Daka / Dakini is not only a profession, it is a true commitment to a deep, personal and life-changing journey towards self-liberation.
+                    </p>
+                    <p>
+                        The journey to knowing our true nature of being, that which we truly are, is a journey full of wonder, magic, love, compassion, transformation and vibrant life.
+                    </p>
+                    <p>
+                        This journey is based on the simple three-fold aspect of the spiritual journey: Purification, Sublimation and Surrender... but above all, the Tantric journey is one of Surrender - we surrender our limiting concept of self, directly experiencing our own
+                        true nature, that which truly is.
+                    </p>
+                    <p>
+                        Being a guide to this enlightening art is both a wonderful journey and a privilege I am truly grateful for. I will be honored to guide you in this mystic, enchanted, transforming and liberating journey towards the direct experience of our true nature.
+                    </p>
+                    <h2>
+                    What we will learn on this journey
+                    </h2>
+                    <div class='float_div_en'>
+                        <strong>
+                    Background:
+                    </strong><br /> * What is Tantra?<br /> * The Energy (Voice) system<br /> * Vibrations and Frequencies<br /> * The three Kayas (trikaya)<br /> and more...
+                    </div>
+                    <div class='float_div_en'>
+                        <strong>
+                    Basic Daka / Dakini Ceremonies:
+                    </strong><br /> * Creating a Ceremony<br /> * Chakra and Nadi initiations<br /> * Sacred Spot Massage<br /> * God / Goddess Worship
+                        <br /> and more...
+                    </div>
+                    <div class='float_div_en'>
+                        <strong>
+                    Sacred Space:
+                    </strong><br /> * Purification and Invocations<br /> * The five Elements<br /> * Circles of Power<br /> * Direct Space Manipulation
+                        <br /> and more...
+                    </div>
+                    <div class='float_div_en'>
+                        <strong>
+                    Ethics:
+                    </strong><br /> * Sexual relationships with clients<br /> * Setting Standards (not rules)<br /> * Moving beyond power struggles<br /> * The three pillars of safety
+                        <br /> and more...
+                    </div>
+                    <div class='float_div_en'>
+                        <strong>
+                    Tantric Healing:
+                    </strong><br /> * Tantric &amp; Sacred Spot Massage<br /> * Yantras, Mantras and Mudras<br /> * Using Symbols and Colors<br /> * Energy Harmonization
+                        <br /> and more...
+                    </div>
+                    <div class='float_div_en'>
+                        <strong>
+                    Sacred Sexuality:
+                    </strong><br /> * Dealing with nudity and shame<br /> * Sublimation techniques<br /> * The different Orgasms<br /> * Jing, Chi, Ojas - Life Energy
+                        <br /> and more...
+                    </div>
+                    <h2 style='clear:both;'>
+                    General Information
+                    </h2>
+                    <p><strong>
+                    How long does it take?
+                    </strong></p>
+                    <p>
+                        The journey to becoming a Daka / Dakini will take us at least 60 hours of practice and learning. This time can be spent leisurely, through up to three months of learning, or as an intense period of 10 days (my personal favorite).
+                    </p>
+                    <p>
+                        When the first part of the journey is over we will be ready to start our way as interns to the wonderful art of the Daka / Dakini.
+                    </p>
+                    <p>
+                        The internship is not hour based, but rather a very personal journey we each complete in our own pace. It is our time to meet people, give private sessions and at the same time receive a certain amount of support and teachings from our own guides in this
+                        art.
+                    </p>
+                    <p><strong>
+                    Sexual Content:
+                    </strong></p>
+                    <p>
+                        Some of the Daka / Dakini teachings and practices require nudity and are extremely explicit. Also, the sexual content is not gender biased - Daka / Dakinis are expected to be comfortable with all genders to some degree.
+                    </p>
+                    <p>
+                        Because of the intimate essence of the teachings, our ability to express our 'no' and to state our comfort zones is crucial... in fact, it is so important that we will spend time practicing our 'no'.
+                    </p>
+                    <p><strong>
+                    Prerequisites:
+                    </strong></p>
+                    <p>
+                        In order to become a Daka / Dakini, we are required to accept a Commitment.
+                    </p>
+                    <p>
+                        Because of the dedicated and deep nature of this commitment, I also require that we have a personal interview or session before we decide that we can walk this path together.</p>
+                    <p>
+                        Students with prior backgrounds in the healing arts or in Yoga might find the journey easier.
+                    </p>
+                    <p>
+                        The teachings are open to all sexual preferences (straight, gay, lesbian, bisexual, and all of us are welcome).
+                    </p>
+                    <h2>About Prices and Da&ntilde;a</h2>
+                    <p>
+                        In my view, there are two ways to repay for our knowledge. We can pay someone back for their effort or we can pay it forwards and enrich the world...
+                    </p>
+                    <p>
+                        The value of the Daka / Dakini training is far beyond the mere value of the private tantric sessions. still, I do not charge for this extra value in the same way that I normally would.
+                    </p>
+                    <p>
+                        <em>Da&ntilde;a </em>(literally: 'meditation') is my chosen way to receive a 'pay it forward' for <strong>the extra</strong> time and/or effort expended. Da&ntilde;a, which is a form of <strong>donation system</strong>, is a three-fold
+                        path of payment:
+                    </p>
+                    <p>
+                        On the first level, we <strong>donate money</strong> to the teacher, supporting them so they can teach us (and not worry about food or shelter). This is important so that we can actually learn without interruption.
+                    </p>
+                    <p>
+                        On the next level, we <strong>donate our service</strong> to the teacher, supporting their practice so that they can teach as many people as possible (we offer logistical help, technical support etc').
+                    </p>
+                    <p>
+                        On the final level, we <strong>donate our practice</strong> to the teacher, so that we ourselves assist the teacher in his / her teaching.
+                    </p>
+                    <p>
+                        * This system is on top of the normal prices and charges for our time together, reflects only the <strong>extra</strong> value of the training and is only available for people who 'pay it forward' by becoming a practicing Daka
+                        / Dakini.
+                    </p>
+                    <h2>Contact Information</h2>
+                    <p>
+                        Want more information?
+                    </p>
+                    <p>
+                        <a href="#guides">Contact any of the certified teachers.</a>
+                    </p>
+                </div>
+                <div id="articles">
+                    <h2> Arts</h2>
+                    <p>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="side_bar">
+            <div id='index_sb'>
+                <h1>זו הכותרת</h1>
+                <p>ברוכים הבאים</p>
+                <h2>זו הכותרת 2</h2>
+                <p>ברוכים הבאים 2</p>
+                <p>ברוכים הבאים 3</p>
+                <h3>זו הכותרת 3</h3>
+                <p>ברוכים הבאים 2</p>
+                <p>ברוכים הבאים 3</p>
+            </div>
+            <div id='guides_sb'>
+                <h1>זו הכותרת</h1>
+                <p>ברוכים הבאים</p>
+                <h2>זו הכותרת 2</h2>
+                <p>ברוכים הבאים 2</p>
+                <p>ברוכים הבאים 3</p>
+                <h3>זו הכותרת 3</h3>
+                <p>ברוכים הבאים 2</p>
+                <p>ברוכים הבאים 3</p>
+            </div>
+            <div id='terms_sb'>
+            </div>
+            <div id='contact_bs'>
+            </div>
+            <div id='slideshow'>
+                <img src="/images/sb0.jpg" alt='' id='sb_image0' />
+                <img src="/images/sb1.jpg" alt='' id='sb_image1' />
+                <img src="/images/sb2.jpg" alt='' id='sb_image2' />
+                <img src="/images/sb3.jpg" alt='' id='sb_image3' />
+            </div>
+            <div id=''>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="footer"><a href="#links">קישורים מומלצים</a>|<a href="#terms">תנאי שימוש</a>|<a href="#contact">צור קשר</a></div>
+</body>

@@ -1,0 +1,304 @@
+body, html
+{
+	width: 100%;
+	height: 100%;
+	direction: rtl;
+	padding: 0; margin: 0;
+	font-family: verdana, arial, helvetica, sans-serif;
+}
+html
+{
+	background-image: url("/assets/images/dakini/side_bk.jpg");
+	background-repeat: repeat-y;
+	background-position: right top;
+	background-color: #f4ebe7;
+}
+#header, #container, #menu, #footer, #notice
+{
+	display: block;
+	width:100%;
+	padding: 0; margin: 0;
+}
+#container
+{
+	box-sizing: border-box;
+	// padding: 130px 0 2em 0;
+	// min-height: 100%;
+	position: absolute;
+	top: 130px;
+	bottom: 0;
+	padding: 0 0 2em 0;
+}
+#header
+{
+	border-bottom: 1px solid #aaa;
+	height: 130px;
+	background-color: #444;
+	background-image: url("/assets/images/dakini/top_bk.jpg");
+	background-repeat: repeat-x;
+	background-position: top center;
+	position: absolute;
+	top:0; left: 0;
+	z-index: 200;
+	&::after, &::before
+	{
+		content: '';
+		height: 130px;
+		display: block;
+		position: absolute;
+		background-position: top center;
+		background-repeat: no-repeat;
+		margin: 0; padding: 0;
+	}
+	&::after
+	{
+		width: 305px;
+		top: 0; right: 0;
+		background-image: url("/assets/images/dakini/right.png");
+		z-index: +3;
+	}
+	&::before
+	{
+		width: 389px;
+		top: 0; left: 0;
+		background-image: url("/assets/images/dakini/left.png");
+		z-index: +2;
+	}
+}
+#footer
+{
+	font-size: 0.9em;
+	position: fixed;
+	bottom: 0;
+	background-color: #444;
+	text-align: center;
+	padding: 0.2em 0;
+	color: #97141b;
+	background-color: #e9deda;
+	// border-top: #d9ceca solid 1px;
+	// border-bottom: #d9ceca solid 1px;
+	font-family: verdana, arial, helvetica, sans-serif;
+	z-index: +100;
+	a
+	{
+		color: #97141b;
+		font-weight: bold;
+		padding: 0.3em 2em;
+		display: inline-block;
+		text-decoration: none;
+		&:hover
+		{
+			text-decoration: none;
+			background-color: #fff; 
+		}
+	}
+}
+#side_bar
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	padding: 1em 1em;
+	width: 25%;
+	min-height: 100%;
+	background-image: url("/assets/images/dakini/sidebar_bk.jpg");
+	background-repeat: repeat-y;
+	background-position: left top;
+	background-color: #e5cdc4;
+	border-right: 5px solid #e9deda;
+	z-index: +25;
+}
+#menu
+{
+	background-color: #f4a932;
+	border: #f80 solid 1px;
+	text-align: center;
+	position: relative;
+	margin: 0.3em 0;
+	z-index: +100;
+	a
+	{
+		box-sizing: border-box;
+		position:relative;
+		width: 20%;
+		color: #97141b;
+		font-weight: bold;
+		padding: 0.3em 0;
+		text-align: center;
+		display: inline-block;
+		text-decoration: none;
+		border-right: #f80 solid 1px;
+		border-left: #f80 solid 1px;
+		transition:All 0.25s ease;
+		-webkit-transition:All 0.25s ease;
+		-moz-transition:All 0.25s ease;
+		-o-transition:All 0.25s ease;
+		-ms-transition:All 0.25s ease;
+		-moz-box-shadow:inset 0px 0px 0px #f4a932;
+		-webkit-box-shadow:inset 0px 0px 0px #f4a932;
+		box-shadow:inset 0px 0px 0px #f4a932;
+		z-index: +1;
+		&::before
+		{
+			content: '';
+			display:block;
+			position: absolute;
+			top:0; left:0;
+			box-sizing: border-box;
+			width:100%; height:100%;
+			background-color: #f9d49c;
+			z-index:-1;
+			transition:All 0.4s ease;
+			-webkit-transition:All 0.4s ease;
+			-moz-transition:All 0.4s ease;
+			-o-transition:All 0.4s ease;
+			-ms-transition:All 0.4s ease;
+			-moz-box-shadow:inset 0px 0px 1em #f4a932;
+			-webkit-box-shadow:inset 0px 0px 1em #f4a932;
+			box-shadow:inset 0px 0px 1em #f4a932;
+			-moz-opacity: 0.00;
+			opacity: 0.00;
+			transform: scale(0, 0);
+			-webkit-transform: scale(0, 0);
+			-moz-transform: scale(0, 0);
+			-o-transform: scale(0, 0);
+			-ms-transform: scale(0, 0);
+		}
+		&:hover
+		{
+			text-decoration: none;
+			background-color: #f9d49c;
+			color: #811;
+			&::before
+			{
+				-moz-opacity: 1.00;
+				opacity: 1.00;
+				transform: scale(1, 1);
+				-webkit-transform: scale(1, 1);
+				-moz-transform: scale(1, 1);
+				-o-transform: scale(1, 1);
+				-ms-transform: scale(1, 1);
+			}
+		}
+	}
+}
+#notice
+{
+	z-index: 99999;
+	position: absolute;
+	top: 0; left: 0;
+	background-color: rgba(255, 255, 255, 0.5);
+	box-sizing: border-box;
+	padding: 1em 0;
+	text-align: center;
+	height: 100px;
+	overflow-y: auto;
+	color: #fff; font-weight: bold;
+	.notice_close
+	{
+		display:block;
+		position: absolute;
+		top:0; left:0;
+		padding:0.5em;
+		height:100%;
+		width:5em;
+		text-align:left;
+		cursor: pointer;
+		border-right:1px solid #933;
+		color: #000;
+		&:hover
+		{
+			color: #900;
+		}
+	}
+
+	transition:All 0.25s ease;
+	-webkit-transition:All 0.25s ease;
+	-moz-transition:All 0.25s ease;
+	-o-transition:All 0.25s ease;
+	-ms-transition:All 0.25s ease;
+	transform-origin: 0 50%;
+	-webkit-transform-origin: 50% 0; /* Chrome, Safari, Opera */
+	-ms-transform-origin: 50% 0; /* IE 9 */
+	-moz-transform-origin: 50% 0;
+	-o-transform-origin: 50% 0;
+	transform: scale(1, 1);
+	-webkit-transform: scale(1, 1);
+	-moz-transform: scale(1, 1);
+	-o-transform: scale(1, 1);
+	-ms-transform: scale(1, 1);
+	&.hidden
+	{
+		transform: scale(1, 0);
+		-webkit-transform: scale(1, 0);
+		-moz-transform: scale(1, 0);
+		-o-transform: scale(1, 0);
+		-ms-transform: scale(1, 0);
+	}
+}
+#contents
+{
+	margin: 0 18% 2em 25%;
+	background-color: white;
+	box-sizing: border-box;
+	padding: 0.5em 0;
+	min-height: 80%;
+	p
+	{
+		padding: 0 1em;
+		margin: 0.3em 0;
+	}
+	h1, h2, h3
+	{
+		font-size: 1.2em;
+		margin: 0.5em 0;
+	}
+	h1
+	{
+		padding: 45px 1em 0 1em;
+		background-image: url("/assets/images/dakini/h_top.jpg");
+		background-repeat: repeat-x;
+	}
+}
+#picture
+{
+	display: block;
+	position: absolute;
+	top:2.5em; left: 0;
+	margin: 0;
+	width: 24.5%;
+	box-sizing: border-box;
+	padding:0;
+	img {
+		width: 100%; height: auto;
+		padding: 0; margin: 0;
+		display: inline-block;
+	}
+}
+
+/* Responsive issues */
+@media screen and (max-width: 680px)
+{
+	#footer a
+	{
+		padding: 0.3em 0.5em;
+	}
+	#side_bar
+	{
+		position: static;
+		width: 100%;
+		min-height: initial;
+	}
+	#contents
+	{
+		margin: 0 0 2em 0;
+		background-color: white;
+		box-sizing: border-box;
+		padding: 0.5em 1em;
+	}
+	#picture
+	{
+		display:none;
+	}
+}
