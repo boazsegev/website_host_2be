@@ -714,6 +714,7 @@
             setup_sticky_menu();
             init_links();
             switch_page(true);
+            init_guides();
         }
 
         function init_links() {
@@ -784,6 +785,56 @@
                 }
             }
         }
+
+        function fill_guide_data(e) {
+
+        }
+        function clear_guide_data(e) {
+
+        }
+
+        function init_guides() {
+            var guides = [
+                // {
+                //     "first_name": "",
+                //     "last_name": "",
+                //     "email": "",
+                //     "phone": "",
+                //     "link": "",
+                //     "img": "",
+                // },
+                // {
+                //     "first_name": "בועז",
+                //     "last_name": "שגב",
+                //     "email": "boaz@2be.co.il",
+                //     "phone": "",
+                //     "link": "",
+                //     "img": "",
+                // },
+            ];
+            var sec = document.getElementById('guides');
+            var g = guides.shift();
+            while(g) {
+                if(!g.img || g.img == '') {
+                    g.img = 'images/no_pic.jpg';
+                }
+                if(g.link && g.link != ''){
+                    g.DOMelement = document.createElement('a');
+                    g.DOMelement.href = "http://" + g.link;
+                }
+                else
+                    g.DOMelement = document.createElement('div');
+                g.DOMelement.guide = g;
+                g.DOMelement.className = 'guide';
+                g.DOMelement.style.backgroundImage = "url(" + g.img + ")";
+                g.DOMelement.innerHTML = g.first_name + " " + g.last_name;
+                g.DOMelement.onmouseenter = fill_guide_data;
+                g.DOMelement.onmouseleave = clear_guide_data;
+                sec.appendChild(g.DOMelement);
+                g = guides.shift();
+            }
+        }
+
     </script>
 </head>
 
@@ -796,7 +847,7 @@
     </div>
     <div id="container">
         <div id="inner_container">
-            <div id="menu"><a href="#">אודות</a><a href="#guides">מנחים</a><a href="#english">English</a></div>
+            <div id="menu"><a href="#">אודות</a><a href="#guides">מנחים/ות</a><a href="#english">English</a></div>
             <div id="contents">
                 <div id="index">
                     <h2>מרכז "להיות" - מי אנחנו?</h2>
@@ -819,7 +870,7 @@
                     </p>
                     <p>הפניה למנחים הינה לכל מנחה בנפרד ובאופן עצמאי. כך שלתלמידים יש את ההזדמנות לאתר מנחה מתאימ/ה שיעזרו להם לשמור על סביבת לימוד בטוחה התואמת את גבולותיהם האישיים.</p>
                     <p>בסיום הלימודים אצל המנחים השונים, תוכלו להגיש מועמדות לקבלת תעודה של מרכז "להיות", לפי המלצה של מוריכם.</p>
-                    <p><a class="button" href="#guides">לחצו כאן לרשימת מנחים</a></p>
+                    <p><a class="button" href="#guides">לחצו כאן לרשימת מנחים והמנחות.</a></p>
                     <h2>למי מיועדים הלימודים?</h2>
                     <p>מסלול הלימודים כמנחה טנטרה לפי אמנות הדקה / דקיני אינו מתאים לכל אחד.</p>
                     <p>המסלול מתאים רק לאנשים אמיצים המוכנים לחולל שינוי עוצמתי ואמיתי בחייהם, תוך שהם נחשפים באופן מעמיק ואינטימי לרבדים העמוקים ביותר שבהווייתם.</p>
@@ -832,7 +883,7 @@
                     <p>אם אתם מחפשים מידע, סדנאות או מפגשים עם מורים בנושאים אחרים, נסו <a href="#links">בעמוד הקישורים שלנו.</a></p>
                 </div>
                 <div id="guides">
-                    <h2>Guides</h2>
+                    <h2>המנחים והמנחות באמנות הדקה / דקיני</h2>
                 </div>
                 <div id="commitment">
                     <h2>
