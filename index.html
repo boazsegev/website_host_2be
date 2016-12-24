@@ -526,6 +526,32 @@
             height: auto;
         }
 
+        #guide_details {
+            text-align: center;
+        }
+
+        .guide {
+            display: inline-block;
+            margin: 1em;
+            padding: 0.5;
+            box-sizing: border-box;
+            width: 200px;
+            padding-top: 200px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            background-repeat: no-repeat;
+            background-position: top;
+            background-size: 200px 200px;
+            background-color: #f4ebe7;
+            border-radius: 4px;
+            color: #700;
+        }
+        a.guide:hover {
+            background-color: #f4a932;
+        }
+
         @media screen and (max-width: 680px) {
             #menu {
                 font-size: 0.9em
@@ -593,9 +619,27 @@
                 y: yPosition
             };
         }
+        function switch_sidebar(sidebar) {
+            var side_bars = document.getElementById('side_bar').children
+            if (sidebar) {
+                for (var i in side_bars) {
+                    side_bars[i].className = '';
+                }
+                sidebar.className = 'hide';
+                setTimeout(function(sidebar) {
+                    sidebar.className = 'show';
+                    document.getElementById('side_bar').style['min-height'] = document.getElementById('inner_container').clientHeight + "px";
+                }, 10, sidebar);
+
+            } else {
+                for (var i in side_bars) {
+                    if (side_bars[i].className && side_bars[i].className != '')
+                        side_bars[i].className = 'hide';
+                }
+            }
+        }
 
         function switch_page(skip_animation) {
-            var side_bars = document.getElementById('side_bar').children
             var page_name = 'index'
             if (document.URL.indexOf('#') >= 0) {
                 page_name = document.URL.split('#').pop();
@@ -609,14 +653,7 @@
                     }
                 }
                 valid_pages[page_name].className = 'show_section';
-                for (var i in side_bars) {
-                    side_bars[i].className = '';
-                }
-                document.getElementById(valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow').className = 'hide';
-                setTimeout(function(page_name) {
-                    document.getElementById(valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow').className = 'show';
-                    document.getElementById('side_bar').style['min-height'] = document.getElementById('inner_container').clientHeight + "px";
-                }, 10, page_name);
+                switch_sidebar(valid_pages[page_name].sidebar);
                 return;
             } else {
                 var from;
@@ -627,25 +664,12 @@
                     }
                 }
                 if (from && valid_pages[from]) {
-                    var side_bars = document.getElementById('side_bar').children
-                    for (var i in side_bars) {
-                        if (side_bars[i].className && side_bars[i].className != '')
-                            side_bars[i].className = 'hide';
-                    }
                     valid_pages[from].className = 'hide_section';
-                    animation_link_interval = window.setTimeout(function(from, to) {
-                        valid_pages[from].className = ''
-                        valid_pages[to].className = 'show_section'
-                        for (var i in side_bars) {
-                            side_bars[i].className = '';
-                        }
-                        document.getElementById(valid_pages[page_name].has_sidebar ? (to + '_sb') : 'slideshow').className = 'hide';
-                        setTimeout(function(page_name) {
-                            var sb_target = valid_pages[page_name].has_sidebar ? (page_name + '_sb') : 'slideshow';
-                            var height = document.getElementById('inner_container').clientHeight;
-                            document.getElementById('side_bar').style['min-height'] = height + "px";
-                            document.getElementById(sb_target).className = 'show';
-                        }, 10, to);
+                    switch_sidebar();
+                    window.setTimeout(function(from, to) {
+                        valid_pages[from].className = '';
+                        valid_pages[to].className = 'show_section';
+                        switch_sidebar(valid_pages[page_name].sidebar, true);
                     }, 250, from, page_name);
                 } else {
                     switch_page(true);
@@ -684,17 +708,15 @@
         }
 
         function init_document() {
-            valid_pages.index = document.getElementById('index');
-            valid_pages[''] = document.getElementById('index');
-            valid_pages.guides = document.getElementById('guides');
-            valid_pages.guides.has_sidebar = true;
-            valid_pages.english = document.getElementById('english');
-            valid_pages.articles = document.getElementById('articles');
-            valid_pages.links = document.getElementById('links');
-            valid_pages.commitment = document.getElementById('commitment');
-            valid_pages.terms = document.getElementById('terms');
-            valid_pages.contact = document.getElementById('contact');
-            valid_pages.training = document.getElementById('training');
+            var pages = document.getElementById('contents').children
+            var slideshow = document.getElementById('slideshow')
+            for (var i in pages) {
+                if (!pages.hasOwnProperty(i)) continue;
+                valid_pages[pages[i].id] = pages[i];
+                valid_pages[pages[i].id].sidebar = document.getElementById(pages[i].id + "_sb") || slideshow;
+            }
+            // fix the `#` link to root.
+            valid_pages[''] = valid_pages.index;
 
             var all_links = document.getElementsByTagName('a');
             baseURL = document.URL.split('#').shift();
@@ -787,10 +809,14 @@
         }
 
         function fill_guide_data(e) {
-
+            document.getElementById('guide_name').innerHTML = e.target.innerHTML;
+            document.getElementById('guide_phone').innerHTML = e.target.guide.phone;
+            document.getElementById('guide_email').innerHTML = "<a href=mailto:'" + e.target.guide.email + "'>" + e.target.guide.email + "</a>";
+            switch_sidebar();
+            window.setTimeout(switch_sidebar, 250, document.getElementById('guide_details'));
         }
         function clear_guide_data(e) {
-
+            // do nothing.
         }
 
         function init_guides() {
@@ -803,14 +829,22 @@
                 //     "link": "",
                 //     "img": "",
                 // },
-                // {
-                //     "first_name": "בועז",
-                //     "last_name": "שגב",
-                //     "email": "boaz@2be.co.il",
-                //     "phone": "",
-                //     "link": "",
-                //     "img": "",
-                // },
+                {
+                    "first_name": "בועז",
+                    "last_name": "שגב",
+                    "email": "boaz@2be.co.il",
+                    "phone": "",
+                    "link": "",
+                    "img": "",
+                },
+                {
+                    "first_name": "מאיר",
+                    "last_name": "פורת",
+                    "email": "icu.ifixu@gmail.com",
+                    "phone": "054-441-7400",
+                    "link": "http://www.ifixu.co.il/%D7%9E%D7%90%D7%99%D7%A8-%D7%A4%D7%95%D7%A8%D7%AA/",
+                    "img": "images/guides/meir_porat.jpg",
+                },
             ];
             var sec = document.getElementById('guides');
             var g = guides.shift();
@@ -820,9 +854,12 @@
                 }
                 if(g.link && g.link != ''){
                     g.DOMelement = document.createElement('a');
-                    g.DOMelement.href = "http://" + g.link;
+                    g.DOMelement.href = g.link;
                 }
-                else
+                else if (g.email && g.email != '') {
+                    g.DOMelement = document.createElement('a');
+                    g.DOMelement.href = "mailto:" + g.email;
+                } else
                     g.DOMelement = document.createElement('div');
                 g.DOMelement.guide = g;
                 g.DOMelement.className = 'guide';
@@ -833,6 +870,7 @@
                 sec.appendChild(g.DOMelement);
                 g = guides.shift();
             }
+            clear_guide_data();
         }
 
     </script>
@@ -1023,7 +1061,7 @@
                         בעניין הדרכה טנטרית ובכל הקשור לענייני טנטרה, יש לפנות למנחים המפרסמים עצמם באתר, בעמוד המנחים.
                     </p>
                     <p>
-                        בכל הקשור בזכויות יוצרים וכיו"ב, ניתן לפנות לבועז שגב בנוסף לפרסם הרלוונטי ואנו נדאג להסרת כל פרסום שמפר זכויות יוצרים.
+                        בכל הקשור בזכויות יוצרים וכיו"ב, ניתן לפנות לבועז שגב בנוסף למפרסם הרלוונטי ואנו נדאג להסרת כל פרסום שמפר זכויות יוצרים.
                     </p>
                 </div>
                 <div id="links">
@@ -1340,37 +1378,13 @@
                         <a href="#guides">Contact any of the certified teachers.</a>
                     </p>
                 </div>
-                <div id="articles">
-                    <h2> Arts</h2>
-                    <p>
-                    </p>
-                </div>
             </div>
         </div>
         <div id="side_bar">
-            <div id='index_sb'>
-                <h1>זו הכותרת</h1>
-                <p>ברוכים הבאים</p>
-                <h2>זו הכותרת 2</h2>
-                <p>ברוכים הבאים 2</p>
-                <p>ברוכים הבאים 3</p>
-                <h3>זו הכותרת 3</h3>
-                <p>ברוכים הבאים 2</p>
-                <p>ברוכים הבאים 3</p>
-            </div>
-            <div id='guides_sb'>
-                <h1>זו הכותרת</h1>
-                <p>ברוכים הבאים</p>
-                <h2>זו הכותרת 2</h2>
-                <p>ברוכים הבאים 2</p>
-                <p>ברוכים הבאים 3</p>
-                <h3>זו הכותרת 3</h3>
-                <p>ברוכים הבאים 2</p>
-                <p>ברוכים הבאים 3</p>
-            </div>
-            <div id='terms_sb'>
-            </div>
-            <div id='contact_bs'>
+            <div id='guide_details'>
+                <h1 id="guide_name">בחרו מנחה</h1>
+                <p id='guide_phone'></p>
+                <p id='guide_email'></p>
             </div>
             <div id='slideshow'>
                 <img src="images/sb0.jpg" alt='' id='sb_image0' />
