@@ -855,6 +855,7 @@
                 },
             ];
             var sec = document.getElementById('guides');
+            guides = guides.sort(function(a,b) {return Math.random() - 0.5});
             var g = guides.shift();
             while(g) {
                 if(!g.img || g.img == '') {
